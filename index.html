@@ -100,6 +100,10 @@
       const valentine = document.querySelector(".valentine");
       const celebration = document.querySelector(".celebration");
       const yesButton = document.querySelector("[data-choice='yes']");
+      const noButton = document.querySelector("[data-choice='no']");
+
+      let yesScale = 1;
+      let noScale = 1;
 
       const loadTenor = () => {
         if (document.querySelector("script[src='https://tenor.com/embed.js']")) {
@@ -121,6 +125,13 @@
           </div>
         `;
         loadTenor();
+      });
+
+      noButton.addEventListener("click", () => {
+        yesScale *= 1.05;
+        noScale *= 0.95;
+        yesButton.style.transform = `scale(${yesScale.toFixed(3)})`;
+        noButton.style.transform = `scale(${noScale.toFixed(3)})`;
       });
     </script>
   </body>
