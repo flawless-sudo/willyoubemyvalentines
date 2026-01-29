@@ -31,7 +31,7 @@
 
       .valentine {
         text-align: center;
-        padding: 32px 24px;
+        padding: 24px 24px 32px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -41,12 +41,13 @@
       .valentine img {
         width: min(320px, 70vw);
         height: auto;
+        margin-top: -12px;
         border-radius: 18px;
         box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
       }
 
       .valentine p {
-        margin: 0;
+        margin: -6px 0 0;
         font-size: clamp(1.6rem, 3.2vw, 2.3rem);
         color: #ffffff;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
@@ -59,12 +60,12 @@
       }
 
       .choice {
-        min-width: 120px;
-        padding: 12px 28px;
+        min-width: 150px;
+        padding: 14px 36px;
         border-radius: 12px;
         background: linear-gradient(145deg, #6f6f6f, #4f4f4f);
         color: #ffffff;
-        font-size: 1.1rem;
+        font-size: 1.25rem;
         font-weight: 600;
         border: none;
         cursor: pointer;
@@ -101,7 +102,6 @@
       const celebration = document.querySelector(".celebration");
       const yesButton = document.querySelector("[data-choice='yes']");
       const noButton = document.querySelector("[data-choice='no']");
-      const questionText = document.querySelector(".valentine p");
 
       let yesScale = 1;
       let noScale = 1;
@@ -145,7 +145,7 @@
         yesButton.style.transform = `scale(${yesScale.toFixed(3)})`;
         noButton.style.transform = `scale(${noScale.toFixed(3)})`;
         const promptIndex = Math.min(noClickCount, noPrompts.length) - 1;
-        questionText.textContent = noPrompts[promptIndex];
+        noButton.textContent = noPrompts[promptIndex];
       });
     </script>
   </body>
