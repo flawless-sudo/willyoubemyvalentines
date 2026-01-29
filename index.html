@@ -101,9 +101,20 @@
       const celebration = document.querySelector(".celebration");
       const yesButton = document.querySelector("[data-choice='yes']");
       const noButton = document.querySelector("[data-choice='no']");
+      const questionText = document.querySelector(".valentine p");
 
       let yesScale = 1;
       let noScale = 1;
+      let noClickCount = 0;
+
+      const noPrompts = [
+        "Are you sure?",
+        "100% positive??",
+        "please?",
+        "pretty please??",
+        "PRETTY PLEASEUH",
+        "last chance",
+      ];
 
       const loadTenor = () => {
         if (document.querySelector("script[src='https://tenor.com/embed.js']")) {
@@ -128,10 +139,13 @@
       });
 
       noButton.addEventListener("click", () => {
-        yesScale *= 1.05;
-        noScale *= 0.95;
+        noClickCount += 1;
+        yesScale *= 1.08;
+        noScale *= 0.92;
         yesButton.style.transform = `scale(${yesScale.toFixed(3)})`;
         noButton.style.transform = `scale(${noScale.toFixed(3)})`;
+        const promptIndex = Math.min(noClickCount, noPrompts.length) - 1;
+        questionText.textContent = noPrompts[promptIndex];
       });
     </script>
   </body>
